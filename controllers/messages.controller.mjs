@@ -1,9 +1,15 @@
 'use strict';
 
+import * as path from 'path';
+
 import * as model from "../models/messages.model.mjs";
 
+const __dirname = path.join(path.dirname(decodeURI(new URL(import.meta.url).pathname))).replace(/^\\([A-Z]:\\)/, "$1");
+
 export function getMessages (req, res) {
-    res.send(JSON.stringify(model['messages']));
+    // res.send(JSON.stringify(model['messages']));
+    const filePath = path.join(__dirname, '..', 'public', 'images', 'yugi.png');
+    res.sendFile(filePath);
 };
 
 export function postMessage(req, res) {
